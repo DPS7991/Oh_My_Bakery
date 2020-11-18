@@ -31,7 +31,13 @@ const HeroSection = () => {
           your next order when you sign up with us.
         </HeroP>
         <HeroBtnWrapper>
-          <Button to="cakes" onMouseEnter={onHover} onMouseLeave={onHover}>
+          <Button
+            to="cakes"
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            primary="true"
+            dark="true"
+          >
             Order now {hover ? <ArrowDownward /> : <ArrowDown />}
           </Button>
         </HeroBtnWrapper>
