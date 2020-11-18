@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MdArrowDownward, MdArrowForward, MdKeyboardArrowDown } from "react-icons/md";
+import { MdArrowDownward, MdKeyboardArrowDown } from "react-icons/md";
 
 export const HeroContainer = styled.div`
   background: #0c0c0c;
