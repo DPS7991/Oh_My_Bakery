@@ -12,7 +12,7 @@ import {
 } from "./ProductsElements";
 import { Button } from "../ButtonElements";
 
-const ProductsOne = ({ heading, data }) => {
+const ProductsTwo = ({ heading, data }) => {
   const [hover, sethover] = useState(false);
 
   const onHover = () => {
@@ -20,7 +20,7 @@ const ProductsOne = ({ heading, data }) => {
   };
   return (
     <div>
-      <ProductsContainer id="cakes">
+      <ProductsContainer id="cupcakes">
         <ProductsHeading>{heading}</ProductsHeading>
         <ProductWrapper>
           {data.map((product, index) => {
@@ -50,4 +50,4 @@ const ProductsOne = ({ heading, data }) => {
   );
 };
 
-export default ProductsOne;
+export default ProductsTwo;
