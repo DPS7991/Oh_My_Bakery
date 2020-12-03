@@ -32,11 +32,16 @@ const HeroSection = () => {
         </HeroP>
         <HeroBtnWrapper>
           <Button
-            to="../Cakes"
+            to="cakes"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             primary="true"
             dark="true"
+            smooth={true}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-80}
           >
             Order now {hover ? <ArrowDownward /> : <ArrowDown />}
           </Button>

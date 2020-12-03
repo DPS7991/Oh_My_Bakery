@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   ProductsContainer,
   ProductWrapper,
@@ -11,13 +11,16 @@ import {
   ProductPrice,
 } from "./ProductsElements";
 import { Button } from "../ButtonElements";
+import { CartContext } from "../../pages/index";
 
 const ProductsOne = ({ heading, data }) => {
   const [hover, sethover] = useState(false);
+  const cartContext = useContext(CartContext);
 
   const onHover = () => {
     sethover(!hover);
   };
+
   return (
     <div>
       <ProductsContainer id="cakes">
@@ -37,6 +40,7 @@ const ProductsOne = ({ heading, data }) => {
                     onMouseLeave={onHover}
                     primary="true"
                     dark="true"
+                    onClick={() => cartContext.updateCart([...cartContext.cartItems, product])}
                   >
                     {product.button}
                   </Button>

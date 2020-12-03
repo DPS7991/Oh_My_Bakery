@@ -1,4 +1,5 @@
 import React from "react";
+import { animateScroll as scroll } from "react-scroll";
 import {
   FooterContainer,
   FooterWrap,
@@ -10,10 +11,17 @@ import {
   WebsiteRights,
   SocialIcons,
   SocialIconLink,
+  SocialMedia,
+  SocialMediaWrap,
+  SocialLogo,
 } from "./FooterElements";
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <FooterContainer>
       <FooterWrap>
@@ -31,41 +39,31 @@ const Footer = () => {
               <FooterLink to="/signin">Support</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
-          {/* <FooterLinksWrapper>
-            <FooterLinkItems>
-              <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to="/signin">
-                Instagram <FaInstagram />
-              </FooterLink>
-              <FooterLink to="/signin">
-                Facebook <FaFacebook />
-              </FooterLink>
-              <FooterLink to="/signin">
-                Youtube <FaYoutube />
-              </FooterLink>
-              <FooterLink to="/signin">
-                Twitter <FaTwitter />
-              </FooterLink>
-            </FooterLinkItems>
-          </FooterLinksWrapper> */}
         </FooterLinksContainer>
-        <WebsiteRights>
-          Oh My Bakery © {new Date().getFullYear()} All rights reserved.
-        </WebsiteRights>
-        <SocialIcons>
-          <SocialIconLink href="/" target="_blank" aria-label="Facebook">
-            <FaFacebook />
-          </SocialIconLink>
-          <SocialIconLink href="/" target="_blank" aria-label="Instagram">
-            <FaInstagram />
-          </SocialIconLink>
-          <SocialIconLink href="/" target="_blank" aria-label="Youtube">
-            <FaYoutube />
-          </SocialIconLink>
-          <SocialIconLink href="/" target="_blank" aria-label="Twitter">
-            <FaTwitter />
-          </SocialIconLink>
-        </SocialIcons>
+        <SocialMedia>
+          <SocialMediaWrap>
+            <SocialLogo to="/" onClick={toggleHome}>
+              Oh My Bakery
+            </SocialLogo>
+            <WebsiteRights>
+              Oh My Bakery © {new Date().getFullYear()} All rights reserved.
+            </WebsiteRights>
+            <SocialIcons>
+              <SocialIconLink href="/" target="_blank" aria-label="Facebook">
+                <FaFacebook />
+              </SocialIconLink>
+              <SocialIconLink href="/" target="_blank" aria-label="Instagram">
+                <FaInstagram />
+              </SocialIconLink>
+              <SocialIconLink href="/" target="_blank" aria-label="Youtube">
+                <FaYoutube />
+              </SocialIconLink>
+              <SocialIconLink href="/" target="_blank" aria-label="Twitter">
+                <FaTwitter />
+              </SocialIconLink>
+            </SocialIcons>
+          </SocialMediaWrap>
+        </SocialMedia>
       </FooterWrap>
     </FooterContainer>
   );

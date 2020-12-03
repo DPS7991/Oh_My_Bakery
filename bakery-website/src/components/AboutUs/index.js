@@ -26,26 +26,34 @@ const AboutUs = ({
   alt,
 }) => {
   return (
-    <>
-      <AboutusContainer lightBg={lightBg} id={id}>
-        <AboutusWrapper>
-          <AboutusRow imgStart={imgStart}>
-            <Column1>
-              <TextWrapper>
-                <TopLine>{topLine}</TopLine>
-                <Heading lightText={lightText}>{headline}</Heading>
-                <Subtitle darkText={darkText}>{description}</Subtitle>
-              </TextWrapper>
-            </Column1>
-            <Column2>
-              <ImgWrap>
-                <Img src={logo} alt={alt} />
-              </ImgWrap>
-            </Column2>
-          </AboutusRow>
-        </AboutusWrapper>
-      </AboutusContainer>
-    </>
+    <AboutusContainer lightBg={lightBg} id={id}>
+      <AboutusWrapper>
+        <AboutusRow imgStart={imgStart}>
+          <Column1>
+            <TextWrapper>
+              <TopLine>{topLine}</TopLine>
+              <Heading lightText={lightText}>{headline}</Heading>
+              <Subtitle
+                darkText={darkText}
+                to="home"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-80}
+              >
+                {description}
+              </Subtitle>
+            </TextWrapper>
+          </Column1>
+          <Column2>
+            <ImgWrap>
+              <Img src={logo} alt={alt} />
+            </ImgWrap>
+          </Column2>
+        </AboutusRow>
+      </AboutusWrapper>
+    </AboutusContainer>
   );
 };
 

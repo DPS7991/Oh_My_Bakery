@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
@@ -12,15 +12,21 @@ import AboutUs from "../components/AboutUs";
 import { homeObjOne } from "../components/AboutUs/data";
 import Footer from "../components/Footer";
 
+export const CartContext = createContext({
+  cartItems: [],
+  updateCart: () => {},
+});
+
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cart, setCart] = useState([]);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <>
+    <CartContext.Provider value={{ cartItems: cart, updateCart: setCart }}>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
@@ -33,7 +39,7 @@ const Home = () => {
       <FeatureCupcake />
       <AboutUs {...homeObjOne} />
       <Footer />
-    </>
+    </CartContext.Provider>
   );
 };
 
