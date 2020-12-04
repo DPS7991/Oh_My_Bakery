@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   SidebarContainer,
   Icon,
@@ -11,8 +11,27 @@ import {
   SidebarLinkSignup,
   SidebarLinkCart,
 } from "./SidebarElements";
+import { CartContext } from "../../App";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Sidebar = ({ isOpen, toggle }) => {
+  const cartContext = useContext(CartContext);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    getTotalItems();
+  }, [cartContext.cartItems]);
+
+  const getTotalItems = () => {
+    let total = 0;
+
+    for (let index = 0; index < cartContext.cartItems.length; index++) {
+      total += cartContext.cartItems[index].quantity;
+    }
+
+    setTotalItems(total);
+  };
+
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -29,7 +48,9 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="about" onClick={toggle}>
             About Us
           </SidebarLink>
-          <SidebarLinkCart to="/">Cart ()</SidebarLinkCart>
+          <SidebarLinkCart to="/cart">
+            <FaShoppingCart /> Cart ({totalItems})
+          </SidebarLinkCart>
           <SidebarLinkSignup to="/signup" onClick={toggle}>
             Sign Up
           </SidebarLinkSignup>

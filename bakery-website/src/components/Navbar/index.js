@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FaBirthdayCake, FaBars } from "react-icons/fa";
+import { FaBirthdayCake, FaBars, FaShoppingCart } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { animateScroll as scroll } from "react-scroll";
 import {
@@ -15,11 +15,12 @@ import {
   NavLinkSignup,
   NavLinkCart,
 } from "./NavbarElements";
-import { CartContext } from "../../pages/index";
+import { CartContext } from "../../App";
 
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
   const cartContext = useContext(CartContext);
+  const [totalItems, setTotalItems] = useState(0);
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
@@ -37,9 +38,22 @@ const Navbar = ({ toggle }) => {
     scroll.scrollToTop();
   };
 
+  useEffect(() => {
+    getTotalItems();
+  }, [cartContext.cartItems]);
+
+  const getTotalItems = () => {
+    let total = 0;
+
+    for (let index = 0; index < cartContext.cartItems.length; index++) {
+      total += cartContext.cartItems[index].quantity;
+    }
+
+    setTotalItems(total);
+  };
+
   return (
     <>
-      {/* <ProductsOne /> */}
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
@@ -87,8 +101,9 @@ const Navbar = ({ toggle }) => {
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinkCart to="/">
-                  Cart ({cartContext.cartItems.length})
+                <NavLinkCart to="/cart">
+                  <FaShoppingCart />
+                  Cart ({totalItems})
                 </NavLinkCart>
               </NavItem>
               <NavItem>
