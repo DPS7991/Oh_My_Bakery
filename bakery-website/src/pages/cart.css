@@ -13,6 +13,7 @@
 .cart__Heading {
   font-size: clamp(2rem, 2.5vw, 3rem);
   text-align: center;
+  margin-top: -50px;
   margin-bottom: 5rem;
 }
 
@@ -66,7 +67,7 @@
 }
 
 .product__Button {
-  font-size: 1rem;
+  font-size: 2rem;
   padding: 1rem 4rem;
   border: none;
   background: #01bf71;
