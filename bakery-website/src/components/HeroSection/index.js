@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "../ButtonElement";
+import { Button } from "../ButtonElements";
 import {
   HeroContainer,
   HeroBg,
@@ -27,11 +27,22 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1>Greatest Cakes Ever</HeroH1>
         <HeroP>
-          Order cakes that make you go 'wow' and receive a 20% discount towards
+          Order cakes that make you go 'WOW' and receive a 20% discount towards
           your next order when you sign up with us.
         </HeroP>
         <HeroBtnWrapper>
-          <Button to="cakes" onMouseEnter={onHover} onMouseLeave={onHover}>
+          <Button
+            to="cakes"
+            onMouseEnter={onHover}
+            onMouseLeave={onHover}
+            primary="true"
+            dark="true"
+            smooth={true}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-80}
+          >
             Order now {hover ? <ArrowDownward /> : <ArrowDown />}
           </Button>
         </HeroBtnWrapper>
